@@ -268,6 +268,8 @@ async function loadEager(doc) {
     pageType = 'Cart';
   } else if (document.body.querySelector('main .commerce-checkout')) {
     pageType = 'Checkout';
+  } else if (document.querySelector('.home-page-content')) {
+    pageType = 'Homepage';
   }
 
   window.adobeDataLayer.push(
