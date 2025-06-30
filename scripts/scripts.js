@@ -232,7 +232,7 @@ async function loadEager(doc) {
 
   window.adobeDataLayer = window.adobeDataLayer || [];
 
-  let pageType = 'CMS';
+  let pageType = 'Homepage';
   if (document.body.querySelector('main .product-details')) {
     pageType = 'Product';
 
@@ -268,7 +268,7 @@ async function loadEager(doc) {
     pageType = 'Cart';
   } else if (document.body.querySelector('main .commerce-checkout')) {
     pageType = 'Checkout';
-  } else if (document.querySelector('.home-page-content')) {
+  } else if (document.body.querySelector('main .home-page-content')) {
     pageType = 'Homepage';
   }
 
