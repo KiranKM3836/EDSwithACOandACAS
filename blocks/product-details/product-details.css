@@ -117,3 +117,8 @@
     grid-column: 1 / span 2;
   }
 }
+
+.pdp-carousel__slide--active>img{
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+}
