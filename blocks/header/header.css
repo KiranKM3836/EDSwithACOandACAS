@@ -746,3 +746,7 @@ nav {
     display: none;
   }
 }
+
+nav {
+  border-bottom: 1px solid #f5f4ff;
+}

@@ -81,30 +81,45 @@ export default async function decorate(block) {
       return;
     }
 
-    products.forEach(({ productView }) => {
-      let image = productView.images?.[0]?.url || '';
-      const name = productView.name;
-      const url = rootLink(`/products/${productView.urlKey}/${productView.sku}`);
-      const price = productView.price?.final?.amount?.value ??
-                    productView.priceRange?.minimum?.final?.amount?.value ??
-                    'N/A';
+    products.slice(0, 5).forEach(({ productView }) => {
+  const image = productView.images?.[0]?.url || '';
+  const name = productView.name;
+  const url = rootLink(`/products/${productView.urlKey}/${productView.sku}`);
+  const price = productView.price?.final?.amount?.value ??
+                productView.priceRange?.minimum?.final?.amount?.value ?? 'N/A';
 
-      const item = document.createElement('div');
-      item.className = 'product-grid-item';
+  const item = document.createElement('div');
+  item.className = 'product-grid-item';
 
-      item.innerHTML = `
-        <a href="${url}">
-          <picture>
-            <source type="image/webp" srcset="${image}?width=300&format=webply&optimize=medium" />
-            <img loading="lazy" alt="Image of ${name}" width="300" height="375" src="${image}?width=300&format=jpg&optimize=medium" />
-          </picture>
-          <span>${name}</span>
+  item.innerHTML = `
+    <a href="${url}" class="card-link">
+      <div class="card-image-wrapper">
+        <picture>
+          <source type="image/webp" srcset="${image}?width=300&format=webply&optimize=medium" />
+          <img loading="lazy" alt="${name}" src="${image}?width=300&format=jpg&optimize=medium" />
+        </picture>
+      </div>
+      <div class="card-title">
+        ${name}
+        <div class="card-price">$${price}</div>
+      </div>
+    </a>
+  `;
+
+  grid.appendChild(item);
+      });
+
+      // 👉 CTA Card (Go To Arrow)
+      const cta = document.createElement('div');
+      cta.className = 'product-grid-item cta-card';
+      cta.innerHTML = `
+        <a href="${rootLink(`/category/${categoryId}`)}" class="card-link">
+          <div class="go-icon">→</div>
+          <div class="card-title">Go to Category</div>
         </a>
-        <span class="product-grid-cta"><span class="price">$${price}</span></span>
       `;
+      grid.appendChild(cta);
 
-      grid.appendChild(item);
-    });
   } catch (e) {
     console.error('Failed to load top products', e);
     block.textContent = 'Error loading products.';

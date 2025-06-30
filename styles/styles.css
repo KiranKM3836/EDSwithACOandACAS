@@ -90,7 +90,7 @@
   --spacing-huge: 120px;
   --spacing-xhuge: 144px;
   --spacing-xxhuge: 192px;
-  --type-base-font-family: adobe-clean, roboto, roboto-fallback, system-ui, sans-serif;
+  --type-base-font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
   --type-display-1-font: normal normal 300 6rem/7.2rem var(--type-base-font-family);
   --type-display-1-letter-spacing: 0.04em;
   --type-display-2-font: normal normal 300 4.8rem/5.6rem var(--type-base-font-family);
@@ -534,4 +534,20 @@ main[hidden] {
 
 main {
   background-color: #f5f4ff;
+}
+
+.default-content-wrapper {
+  color: #f5f4ff;
+  background-color: #211F54;
+  max-width: 1200px;
+  padding: 1px 17.15% !important;
+
+  h1 {
+    text-align: center;
+  }
+
+  p, li {
+    font-size: 1.4rem;
+  }
+  
 }
