@@ -29,7 +29,7 @@ export default async function decorate(block) {
       const li = document.createElement('li');
       const a = document.createElement('a');
       // You won’t have `url_path`, so use name as placeholder
-      a.href = '#'; 
+      a.href = `catalog/${category.urlPath}`; 
       a.textContent = category.name;
       li.appendChild(a);
       ul.appendChild(li);
