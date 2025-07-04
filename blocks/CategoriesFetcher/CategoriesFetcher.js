@@ -6,6 +6,7 @@ export default async function decorate(block) {
   const categoryQuery = `
     query {
       categories {
+        id
         name
         parentId
         urlPath
@@ -29,7 +30,7 @@ export default async function decorate(block) {
       const li = document.createElement('li');
       const a = document.createElement('a');
       // You won’t have `url_path`, so use name as placeholder
-      a.href = `catalog/${category.urlPath}`; 
+      a.href = `/category/${category.urlPath}?id=${category.id}`; 
       a.textContent = category.name;
       li.appendChild(a);
       ul.appendChild(li);
