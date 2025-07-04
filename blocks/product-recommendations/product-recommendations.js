@@ -138,9 +138,12 @@ function renderItems(block, results) {
   const grid = block.querySelector('.product-grid');
   grid.innerHTML = '';
   const { productsView } = recommendation;
+  if(productsView?.length > 0)
   productsView.forEach((product) => {
     grid.appendChild(renderItem(recommendation.unitId, product));
   });
+  else
+  grid.innerHTML = 'Products Data Not Synced Yet';
 
   const inViewObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -231,6 +234,7 @@ async function loadRecommendation(block, context, visibility, filters) {
         dl.push({ recommendationsContext: { units: recommendations.results.map(mapUnit) } });
         dl.push({ event: 'recs-api-response-received', eventInfo: { ...dl.getState() } });
       });
+      console.log(recommendations,"recommendations")
       resolve(recommendations);
     }).catch((error) => {
       console.error('Error fetching recommendations', error);

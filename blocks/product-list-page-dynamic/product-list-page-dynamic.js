@@ -617,20 +617,20 @@ export default async function decorate(block) {
           }
 
           // 2. Extract ID from query string (?id=123)
-          const params = new URLSearchParams(search);
-          const categoryId = params.get('id');
+          // const params = new URLSearchParams(search);
+          // const categoryId = params.get('id');
 
       
 
       // Then pass this dynamically to PLP block
       const config = {
-        category: categoryId,
+        category: "categoryId",
         urlpath: urlPath,
         type: 'category'
       };
 
       block.textContent = '';
-      block.dataset.category = categoryId;
+      block.dataset.category = "categoryId";
       block.dataset.urlpath = urlPath;
 
       console.log(config,block,"Details")
