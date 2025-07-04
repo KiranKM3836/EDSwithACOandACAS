@@ -221,7 +221,7 @@ export default async function decorate(block) {
 
   const catDrop = document.createElement('li');
   catDrop.classList.add('nav-drop');
-  catDrop.innerHTML = `<span>Categories</span>`;
+  catDrop.innerHTML = `<span>Catalog</span>`;
   const headWrapper = navSections.querySelector('.default-content-wrapper > ul')
 
   headWrapper.insertBefore(catDrop, headWrapper.firstChild)
