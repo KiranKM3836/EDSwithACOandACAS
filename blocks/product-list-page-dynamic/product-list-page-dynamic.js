@@ -612,8 +612,8 @@ export default async function decorate(block) {
 
           // 1. Extract slug after `/category/` regardless of depth
           let urlPath = pathname.replace(/^\/|\/$/g, ''); // remove leading/trailing slashes
-          if (urlPath.startsWith('category/')) {
-            urlPath = urlPath.slice('category/'.length); // e.g., "test/test"
+          if (urlPath.startsWith('catalog/')) {
+            urlPath = urlPath.slice('catalog/'.length); // e.g., "test/test"
           }
 
           // 2. Extract ID from query string (?id=123)
@@ -633,7 +633,7 @@ export default async function decorate(block) {
       block.dataset.category = "categoryId";
       block.dataset.urlpath = urlPath;
 
-      console.log(config,block,"Details")
+      console.log(urlPath,"urlPath")
 
 
   //custom code end
