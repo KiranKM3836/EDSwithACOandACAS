@@ -1,7 +1,9 @@
 mountpoints:
   /:
-    url: https://content.da.live/{org}/{site}/
+    url: https://content.da.live/balathangam/klizerpoc/
     type: markup
 
 folders:
   /products/: /products/default
+  /category/: /category/default
+  /catalog/: /catalog/default

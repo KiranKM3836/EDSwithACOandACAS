@@ -13,6 +13,8 @@ import renderAuthCombine from './renderAuthCombine.js';
 import { renderAuthDropdown } from './renderAuthDropdown.js';
 import { rootLink } from '../../scripts/scripts.js';
 
+import CategoriesFetcher from '../../blocks/CategoriesFetcher/CategoriesFetcher.js'
+
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
 
@@ -214,6 +216,39 @@ export default async function decorate(block) {
         });
       });
   }
+
+  // Category Drop In 
+
+  const catDrop = document.createElement('li');
+  catDrop.classList.add('nav-drop');
+  catDrop.innerHTML = `<span>Catalog</span>`;
+  const headWrapper = navSections.querySelector('.default-content-wrapper > ul')
+
+  headWrapper.insertBefore(catDrop, headWrapper.firstChild)
+
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('submenu-wrapper');
+  catDrop.appendChild(wrapper);
+  setupSubmenu(catDrop);
+
+
+  CategoriesFetcher(wrapper);
+  catDrop.addEventListener('click', (event) => {
+      if (event.target.tagName === 'A') return;
+      if (!isDesktop.matches) {
+        catDrop.classList.toggle('active');
+      }
+    });
+
+    catDrop.addEventListener('mouseenter', () => {
+      toggleAllNavSections(navSections);
+      if (isDesktop.matches) {
+        catDrop.setAttribute('aria-expanded', 'true');
+        overlay.classList.add('show');
+      }
+    });
+
+    // Category Drop In 
 
   const navTools = nav.querySelector('.nav-tools');
 

@@ -82,7 +82,7 @@ header nav .nav-hamburger button {
   border: 0;
   border-radius: 0;
   padding: 0;
-  background-color: var(--color-neutral-50);
+  background-color: #211F54;
   color: inherit;
   overflow: initial;
   text-overflow: initial;
@@ -290,11 +290,30 @@ header nav .nav-sections ul > li:empty {
     font: var(--type-body-1-emphasized-font);
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] ul {
+  /* header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] ul {
     display: flex;
     margin: 0 auto;
     overflow-x: auto;
     width: var(--desktop-large-panel-width);
+  } */
+
+    header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: var(--desktop-large-panel-width); /* 900px */
+    max-height: calc(var(--desktop-panel-max-height) - 2 * var(--spacing-xbig));
+    min-height: calc(var(--desktop-panel-min-height) - 2 * var(--spacing-xbig));
+    /* height: fit-content;  */
+    margin: 0 auto;
+    overflow-x: auto;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] ul > li {
+    flex: 0 0 20%; /* 100 / 5 = 20% */
+    min-width: unset;
+    max-width: unset;
+    box-sizing: border-box;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li ul::before {
