@@ -198,9 +198,20 @@ h6 {
   scroll-margin: 40px;
 }
 
-h1 {
+/* h1 {
   font: var(--type-display-1-font);
   letter-spacing: var(--type-display-1-letter-spacing);
+} */
+
+h1 {
+  color: #F2F1FB;
+  font-family: "Neue Haas Unica Pro", Sans-serif;
+  font-size: 60px;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 60px;
+  line-height: 72px;
+  letter-spacing: 2.4px;
 }
 
 h2 {
@@ -550,4 +561,10 @@ main {
     font-size: 1.4rem;
   }
   
+}
+
+.footer{
+  a {
+    color: #F2F1FB !important;
+  }
 }
