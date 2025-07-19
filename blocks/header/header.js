@@ -14,6 +14,7 @@ import { renderAuthDropdown } from './renderAuthDropdown.js';
 import { rootLink } from '../../scripts/scripts.js';
 
 import CategoriesFetcher from '../../blocks/CategoriesFetcher/CategoriesFetcher.js'
+import * as authApi from '@dropins/storefront-auth/api.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -166,6 +167,12 @@ function setupSubmenu(navSection) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
+
+   events.on('auth/change', () => {
+    console.log("changed auth")
+    updateAuthLinks();
+    });
+
   // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
@@ -365,6 +372,61 @@ export default async function decorate(block) {
   navWrapper.append(nav);
   block.append(navWrapper);
 
+  // 
+
+  //
+  
+
+  //
+
+  function isUserLoggedIn() {
+  return document.cookie
+    .split('; ')
+    .some((cookie) => cookie.startsWith('auth_dropin_firstname='));
+  }
+
+// Adjust navigation items based on login state
+  function updateAuthLinks() {
+  const navLinks = navWrapper.querySelectorAll('.nav-sections a');
+  const isLoggedIn = isUserLoggedIn();
+
+  navLinks.forEach((link) => {
+    const href = link.getAttribute('href')?.toLowerCase();
+    const li = link.closest('li');
+    if (!li) return;
+    console.log(href,"  ")
+    if (href?.includes('/customer/login') || href?.includes('/customer/create')) {
+      li.style.display = isLoggedIn ? 'none' : '';
+    }  else if (href?.includes('/customer/logout')) {
+      console.log("Hie from logout")
+        li.style.display = isLoggedIn ? '' : 'none';
+        if (isLoggedIn) {
+          link.onclick = async (e) => {
+            e.preventDefault();
+            // await authApi.revokeCustomerToken();
+            events.emit('auth/logout');
+          };
+        }
+      } else if (href?.includes('/my-account')) {
+      li.style.display = isLoggedIn ? '' : 'none';
+    }
+    });
+  }
+
+     events.on('auth/logout', async () => {
+  console.log('[Dropin] Logout triggered');
+  await authApi.revokeCustomerToken();
+  events.emit('auth/change');
+   setTimeout(() => {
+    window.location.href = rootLink('/customer/login');
+  }, 100);
+});
+
+updateAuthLinks()
+
+
+  // 
+
   navWrapper.addEventListener('mouseout', (e) => {
     if (isDesktop.matches && !nav.contains(e.relatedTarget)) {
       toggleAllNavSections(navSections);
@@ -401,3 +463,5 @@ export default async function decorate(block) {
   );
   renderAuthDropdown(navTools);
 }
+
+

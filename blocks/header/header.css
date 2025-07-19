@@ -563,8 +563,8 @@ li
 
 .dropdown-wrapper.nav-tools-wrapper .nav-auth-menu-panel .authenticated-user-menu li button {
   cursor: pointer;
-  background-color: transparent !important;
-  color: currentcolor !important;
+  background-color: #211F54 !important;
+  color: #f5f4ff !important;
   padding: 12px 15px !important;
   display: inline-block !important;
   width: 100% !important;
@@ -579,8 +579,19 @@ li
 }
 
 .dropdown-wrapper.nav-tools-wrapper .nav-auth-menu-panel .authenticated-user-menu li button:hover {
-  background-color: lightgray !important;
+  background-color: #f5f4ff !important;
+  color: #211F54 !important;
   border-radius: 0 !important;
+}
+
+.dropdown-wrapper.nav-tools-wrapper .nav-auth-menu-panel .authenticated-user-menu li > a {
+  background-color: #211F54 !important;
+  color: #f5f4ff !important;
+}
+
+.dropdown-wrapper.nav-tools-wrapper .nav-auth-menu-panel .authenticated-user-menu li > a:hover {
+  background-color: #f5f4ff !important;
+  color: #211F54 !important;
 }
 
 .grecaptcha-badge {
