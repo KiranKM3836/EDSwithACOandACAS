@@ -402,7 +402,7 @@ main > .section {
 main > .section > div {
   max-width: 1200px;
   margin: auto;
-  padding: 0 var(--spacing-medium);
+  /* padding: 0 var(--spacing-medium); */
 }
 
 main > .section:first-of-type {
@@ -411,7 +411,7 @@ main > .section:first-of-type {
 
 @media (width >= 900px) {
   main > .section > div {
-    padding: 0 var(--spacing-big);
+    /* padding: 0 var(--spacing-big); */
   }
 }
 
@@ -561,6 +561,10 @@ main {
     font-size: 1.4rem;
   }
   
+}
+
+nav .default-content-wrapper {
+  background-color: transparent;
 }
 
 .footer{
