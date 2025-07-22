@@ -1,5 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
+import fetchCategoriesByParentID from '../../scripts/custom_dropins/commerceBackend/fetchCategoriesByParentID.js'
+
 export default async function decorate(block) {
 
     const slides = [...block.children];
@@ -116,4 +118,6 @@ export default async function decorate(block) {
             navigateSlides(1);
         }, 5000);
     });
+
+    console.log(fetchCategoriesByParentID(2),"catgories")
 }

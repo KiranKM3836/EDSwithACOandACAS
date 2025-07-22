@@ -3,3 +3,26 @@ main .commerce-login-container {
     margin: 40px auto;
     width: 100%;
 }
+
+.commerce-login-container .dropin-button--primary {
+    background-color: #2B3A7A;
+    border-radius: 0;
+}
+
+
+.commerce-login-container .dropin-input--primary {
+    border: 1px solid #001f3f;
+}
+
+.commerce-login-container .dropin-input--primary:focus {
+    border-radius: 10px;
+    /* box-shadow: 1px 1px 1px 1px #FFD700; */
+}
+
+.commerce-login-container .dropin-header-container , .commerce-login-container .dropin-button--primary {
+    text-transform: uppercase;
+}
+
+.commerce-login-container .dropin-button--medium :hover {
+  text-decoration: underline;
+}

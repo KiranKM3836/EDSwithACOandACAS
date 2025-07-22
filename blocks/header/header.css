@@ -836,3 +836,18 @@ nav {
     display: none;
   }
 }
+
+.header {
+  z-index: 900;
+  position: relative;
+}
+
+.header .submenu-wrapper {
+  z-index: 1010;
+  position: relative;
+}
+
+nav {
+  z-index: 1000;
+  position: relative;
+}

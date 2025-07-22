@@ -1,73 +1,228 @@
+/* footer.css */
+
+/* Core Footer Container */
 footer {
-    background-color: var(--color-neutral-100);
-    font: var(--type-body-2-default-font);
-    letter-spacing: var(--type-body-2-default-letter-spacing);
+    background-color: #001f3f; /* Deep blue-black from header for a strong, premium base */
+    color: #ffffff; /* White text for contrast */
+    font-family: 'Montserrat', sans-serif; /* Consistent font with header */
+    font-size: 0.95em; /* Slightly adjusted base font size */
+    line-height: 1.6;
+    letter-spacing: 0.02em; /* Subtle letter spacing */
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1); /* Subtle top shadow for separation */
 }
 
+/* Inner Footer Content Wrapper */
 footer .footer > div {
     margin: auto;
     max-width: 1200px;
-    padding: 40px 24px 24px;
+    padding: 30px 40px 40px; /* Increased padding for more breathing room */
+    display: grid; /* Use CSS Grid for flexible column layout */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 40px; /* Space between grid columns */
+    align-items: start; /* Align content to the top of grid cells */
 }
 
+/* General paragraph styling within footer */
 footer .footer p {
-    margin: 0;
+    margin: 0 0 10px 0; /* Add bottom margin to paragraphs for spacing */
+    color: rgba(255, 255, 255, 0.85); /* Slightly muted white for body text */
 }
+
+/* Link Styling */
+footer .footer a {
+    color: #ffffff; /* White links by default */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .footer a:hover {
+    color: #FFD700; /* Gold on hover */
+    text-decoration: underline; /* Underline on hover for clarity */
+}
+
+/* Heading styles within footer sections (if you have them, e.g., 'About Us', 'Customer Service') */
+footer .footer h3 {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #FFD700; /* Gold for section headings */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Example: Styling for typical footer columns if they are wrapped in divs */
+footer .footer > div > div {
+    /* Each direct child div of footer .footer > div would be a column */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text left within columns */
+}
+
+/* --- Storeview Switcher Specific Styles --- */
+/* (Based on your provided CSS) */
 
 .storeview-switcher-button {
     background: transparent;
     padding-left: 0;
+    color: #ffffff; /* Ensure button text is white */
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between text and chevron */
+    transition: color 0.3s ease;
 }
 
+.storeview-switcher-button:hover {
+    color: #FFD700; /* Gold on hover */
+}
+
+/* If you have an SVG for the chevron, style it here */
+.storeview-switcher-button svg {
+    fill: #ffffff; /* White chevron */
+    transition: fill 0.3s ease;
+}
+
+.storeview-switcher-button:hover svg {
+    fill: #FFD700; /* Gold chevron on hover */
+}
+
+
 .storeview-modal-storeview-title {
+    /* Assuming this is inside a modal, its styling might be separate */
     margin-bottom: var(--spacing-xxbig);
     padding-inline-start: var(--spacing-xbig);
+    color: #001f3f; /* Use header's primary color for modal titles */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
 }
 
 .modal .close-button {
+    /* Ensure close button for modals matches premium style */
     top: 40px !important;
     right: 40px !important;
+    background-color: #001f3f;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
+.modal .close-button:hover {
+    background-color: #FFD700;
+    transform: rotate(90deg); /* Nice subtle animation */
+}
+
+.modal .close-button svg {
+    color: #ffffff; /* White X icon */
+    width: 20px;
+    height: 20px;
+}
+
 
 .storeview-single-store {
     list-style-type: none;
+    padding: 0; /* Remove default padding */
 }
 
 .storeview-selection .storeview-multiple-stores {
-    list-style-image: url("../../icons/chevron-right.svg");
+    list-style-image: url("../../icons/chevron-right-white.svg"); /* Use a white chevron for dark background */
     list-style-position: inside;
+    color: rgba(255, 255, 255, 0.9); /* Text color for multi-store list item */
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.storeview-selection .storeview-multiple-stores:hover {
+    color: #FFD700;
+    list-style-image: url("../../icons/chevron-right-gold.svg"); /* Change chevron on hover if possible */
 }
 
 .storeview-selection > li {
-    margin-bottom: var(--spacing-small);
+    margin-bottom: 12px; /* Slightly adjusted spacing */
 }
 
 .storeview-multiple-stores > ul {
     position: relative;
     width: 100%;
+    padding-left: 20px; /* Indent sub-list */
+    margin-top: 8px; /* Space between parent and sub-list */
 }
 
 .storeview-multiple-stores > ul > li {
-    list-style: none;
+    list-style: none; /* Remove list style */
     display: none;
+    margin-bottom: 8px; /* Spacing for sub-list items */
 }
 
 .storeview-multiple-stores[aria-expanded="true"] {
-    list-style-image: url("../../icons/chevron-down.svg");
+    list-style-image: url("../../icons/chevron-down-white.svg"); /* White down chevron */
+}
+
+.storeview-multiple-stores[aria-expanded="true"]:hover {
+    list-style-image: url("../../icons/chevron-down-gold.svg"); /* Gold down chevron on hover */
 }
 
 .storeview-multiple-stores[aria-expanded="true"] > ul {
-    padding-left: 0;
+    padding-left: 20px; /* Keep indentation for expanded list */
 }
 
 .storeview-multiple-stores[aria-expanded="true"] > ul > li {
     display: block;
     list-style-type: none;
-    margin-bottom: var(--spacing-small);
+    margin-bottom: 8px;
 }
 
-@media (width >= 900px) {
+/* Copyright or bottom text styling */
+footer .footer .copyright-text {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator line */
+    margin-top: 40px;
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* Media Queries */
+@media (max-width: 900px) {
     footer .footer > div {
-        padding: 40px 32px 24px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust columns for tablets */
+        padding: 40px 24px 24px;
+        gap: 30px;
+    }
+
+    footer .footer h3 {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    footer .footer > div {
+        grid-template-columns: 1fr; /* Single column layout for mobile */
+        padding: 30px 20px 20px;
+        gap: 20px;
+    }
+
+    footer .footer h3 {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+
+    footer .footer .copyright-text {
+        padding-top: 20px;
+        margin-top: 30px;
+        font-size: 0.8em;
     }
 }

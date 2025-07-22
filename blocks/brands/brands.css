@@ -2,7 +2,7 @@
 
 /* Parent container for the entire brands block */
 .brands.block {
-    padding: 60px 0;
+    padding: 60px 0 0 0;
     background-color: #f8f8f8;
     text-align: center;
     position: relative;
