@@ -10,9 +10,10 @@ export default function decorate(block) {
     form.appendChild(label);
 
     const input = document.createElement("input");
-    input.type = "text";
+    input.type = "number";
     input.id = "zipcode";
     input.name = "zipcode";
+    input.placeholder = "Enter Zipcode here...";
     input.required = true;
     form.appendChild(input);
 
@@ -51,6 +52,8 @@ export default function decorate(block) {
             message.textContent = "Error validating ZIPcode.";
             message.style.color = "red";
         }
+         
+        
     });
 
     // Append form to body
