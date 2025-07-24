@@ -1,1 +1,8 @@
 /* stylelint-disable no-empty-source */
+
+.commerce-mini-cart-wrapper div,.commerce-mini-cart-wrapper .dropin-iconButton{
+    color: white;
+}
+.minicart-wrapper .minicart-panel {
+    top: 55px;
+}

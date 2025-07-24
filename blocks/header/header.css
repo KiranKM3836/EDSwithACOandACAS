@@ -575,6 +575,7 @@ header .nav-search-input .search_autocomplete .popover-container {
 @media (width >= 1024px) {
   .dropdown-wrapper.nav-tools-wrapper .nav-auth-menu-panel {
     width: 398px;
+    top: 60px;
   }
 }
 

@@ -2,7 +2,9 @@
 
 .commerce-cart {
   padding: var(--spacing-large) 0;
+  color: #1F2937;
 }
+
 
 .cart__wrapper {
   display: flex;
@@ -17,6 +19,26 @@
 
 .cart__gift-options{
   margin-top: var(--spacing-medium);
+}
+
+.cart__left-column, .cart__right-column {
+  background-color: white;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* border: 2px solid #1F2937; */
+}
+
+/* .commerce-cart .dropin-divider--primary {
+  border-top: 0.5px solid #1F2937;
+}
+
+.commerce-cart .dropin-cart-item__title {
+
+} */
+
+.commerce-cart .dropin-button--primary {
+  background-color: #2B3A7A;
+  color: #fff;
 }
 
 @media (width >= 900px) {
