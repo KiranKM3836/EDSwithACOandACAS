@@ -408,31 +408,44 @@ header nav .nav-tools-wrapper > button:hover {
   border-radius: 4px; /* Slight rounding for a premium touch */
 }
 
-header nav .nav-tools button.nav-cart-button {
+
+.nav-cart-button {
+  position: relative;
+  background: none;
+  border: none;
+}
+
+.cart-icon {
   -webkit-mask-image: url('../../icons/cart.svg');
   mask-image: url('../../icons/cart.svg');
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  background-color: var(--header-text-light); /* Icon color */
+  background-color: var(--header-text-light);
   width: 30px;
   height: 24px;
+  display: block;
 }
 
-header nav .nav-tools button.nav-cart-button[data-count]::after {
+.nav-cart-button[data-count]::after {
   content: attr(data-count);
   position: absolute;
-  top: 0;
-  right: -2px;
-  background-color: var(--header-accent-gold); /* Accent color for count bubble */
-  color: var(--header-bg-dark); /* Dark text on gold */
+  top: -8px;
+  right: -10px;
+  color: var(--header-bg-dark);
+  background-color: var(--header-accent-gold);
   border-radius: 50%;
-  width: 1.75em;
-  height: 1.75em;
+  min-width: 20px;
+  min-height: 15px;
+  padding: 1px;
+  font-size: 12px;
   display: flex;
   align-items: center;
-  font-size: 0.8em;
   justify-content: center;
+  font-weight: bold;
+  z-index: 99;
 }
+
+
 
 header nav .nav-tools button.nav-search-button {
   font-size: 0;
@@ -464,8 +477,23 @@ header .nav-search-panel input {
   transition: border-color var(--transition-speed-fast) ease;
 }
 
+
+header .nav-search-panel {
+    padding: 5px;
+    border: 2px solid #1F2937;
+}
+
+header .nav-search-panel input {
+    background-color: #FFFFFF;
+    border: 2px solid #1F2937;
+    color: #1F2937;
+}
+
 header .nav-search-panel input::placeholder {
-    color: rgba(255, 255, 255, 0.4); /* Lighter placeholder text */
+    /* color: rgba(255, 255, 255, 0.4);  */
+    /* Lighter placeholder text */
+    color: #1F2937;
+    opacity: 0.5;
 }
 
 header .nav-search-panel input:focus {
@@ -503,6 +531,7 @@ header .nav-search-input .search_autocomplete .popover-container {
   }
 
   header nav .nav-search-panel {
+    top: 55px;
     width: 398px;
   }
 }
@@ -851,4 +880,29 @@ nav {
 nav {
   z-index: 1000;
   position: relative;
+}
+
+.dropin-button--primary{
+  border: 2px solid #ffff !important;
+}
+
+.dropin-button--tertiary {
+  border: 0.5px solid #ffff !important;
+}
+
+.nav-dropdown-button-desktop {
+  display: none !important;
+}
+
+.nav-dropdown-button-mobile {
+  display: flex !important;
+}
+
+@media (width >= 900px) {
+  .nav-dropdown-button-desktop{
+    display: flex !important;
+  }
+  .nav-dropdown-button-mobile {
+  display: none !important;
+}
 }

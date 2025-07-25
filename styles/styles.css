@@ -641,3 +641,14 @@ nav .default-content-wrapper {
 .nav-auth-menu-panel .auth-sign-in-form {
  border-radius: 0%;
 }
+
+.nav-auth-menu-panel .dropin-input__field-icon--left {
+  color: #1F2937;
+}
+
+.dropin-button--primary {
+  background-color: #1F2937 !important;
+  font-weight: bold !important;
+}
+
+
