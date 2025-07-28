@@ -1,59 +1,156 @@
+/* Premium Design CSS for Commerce Account Sidebar */
+
+/* Variables (if you want to define these centrally for your premium theme) */
+:root {
+    --premium-color-primary: #333; /* Darker text/icon color */
+    --premium-color-secondary: #777; /* Muted subtitle color */
+    --premium-color-background-light: #F8F8F8; /* Lighter background for items */
+    --premium-color-background-active: #EEE; /* Slightly darker active background */
+    --premium-color-border: #E0E0E0; /* Softer border color */
+    --premium-color-border-active: #1F2937; /* Accent color for active border, typically blue or a brand color */
+
+    --premium-spacing-xxsmall: 4px;
+    --premium-spacing-xsmall: 8px;
+    --premium-spacing-small: 12px;
+    --premium-spacing-medium: 20px; /* Slightly more padding */
+    --premium-spacing-large: 28px;
+
+    --premium-border-radius-1: 6px; /* Softer corners */
+    --premium-border-radius-2: 10px; /* More rounded */
+
+    --premium-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.05); /* Subtle lift */
+    --premium-shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.1); /* More pronounced on hover */
+
+    /* Ensure your global font variables support a premium look, e.g.,
+       --type-button-1-font: 600 16px/1.4 'Inter', sans-serif;
+       --type-button-2-font: 400 13px/1.5 'Inter', sans-serif;
+    */
+}
+
+
 @media (width >= 900px) {
     body.columns main > .section.commerce-account-sidebar-container {
         max-width: var(--column-width);
     }
 }
 
+.commerce-account-sidebar-wrapper {
+    /* Optional: Add a subtle background or shadow to the wrapper itself if it's a floating element */
+    /* background-color: var(--color-background-surface, #FFFFFF); */
+    /* border-radius: var(--premium-border-radius-2); */
+    /* box-shadow: var(--premium-shadow-medium); */
+    /* padding: var(--premium-spacing-medium); */
+}
+
+.commerce-account-sidebar-wrapper .commerce-account-sidebar {
+    /* If the wrapper isn't the primary container, ensure this block also gets some premium touches */
+    background-color: var(--color-background-surface, #FFFFFF); /* Ensure a clean background */
+    border-radius: var(--premium-border-radius-2);
+    box-shadow: var(--premium-shadow-light); /* Give it a subtle lift */
+    padding: var(--premium-spacing-small); /* Adjust internal padding if desired for the whole sidebar block */
+}
+
 .commerce-account-sidebar-wrapper .commerce-account-sidebar .commerce-account-sidebar-item {
     display: flex;
     align-items: center;
-    padding: var(--spacing-medium);
-    margin-bottom: var(--spacing-small);
-    border: var(--shape-border-width-2) solid var(--color-neutral-400);
-    border-radius: var(--shape-border-radius-2);
+    padding: var(--premium-spacing-medium); /* Increased padding for better touch targets and spacing */
+    margin-bottom: var(--premium-spacing-small); /* Consistent margin */
+    border: var(--shape-border-width-2, 1px) solid var(--premium-color-border); /* Softer border */
+    border-radius: var(--premium-border-radius-1); /* Slightly rounded corners */
     text-decoration: none;
+    color: var(--premium-color-primary); /* Default text color */
+    transition: all 0.2s ease-in-out; /* Smooth transitions for hover/active states */
+    cursor: pointer; /* Indicate interactivity */
+}
+
+.commerce-account-sidebar-wrapper .commerce-account-sidebar .commerce-account-sidebar-item:last-child {
+    margin-bottom: 0; /* Remove margin from the last item */
+}
+
+.commerce-account-sidebar-wrapper .commerce-account-sidebar .commerce-account-sidebar-item:hover {
+    background-color: var(--premium-color-background-active); /* Subtle background change on hover */
+    border-color: var(--premium-color-border-active); /* Border accent on hover */
+    box-shadow: var(--premium-shadow-light); /* Slight lift on hover */
+    transform: translateY(-1px); /* Very subtle upward movement */
 }
 
 .commerce-account-sidebar-wrapper .commerce-account-sidebar .commerce-account-sidebar-item-active {
-    border-color: var(--color-neutral-800);
-    background-color: var(--color-neutral-200);
+    border-color: var(--premium-color-border-active); /* Primary accent color for active border */
+    background-color: var(--premium-color-background-active); /* Slightly darker background for active */
+    color: var(--premium-color-primary); /* Maintain strong text color */
+    box-shadow: var(--premium-shadow-light); /* Consistent shadow for active state */
 }
 
 .commerce-account-sidebar-item-icon {
     flex: 0 0 auto;
-    margin-right: var(--spacing-small);
+    margin-right: var(--premium-spacing-medium); /* Increased space between icon and text */
+    /* Adjust icon size if needed through SVG parent or child rules */
 }
 
 .commerce-account-sidebar-item-icon > div {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* You might want to style the SVG directly for color/size consistency */
+    /* For example, for the SVGs you provided: */
+    & svg {
+        stroke: currentColor; /* Ensure SVG stroke inherits color */
+        width: 28px; /* Slightly smaller for elegance, adjust as needed */
+        height: 28px;
+    }
 }
 
 .commerce-account-sidebar-item-content {
     flex: 1 1 auto;
+    display: flex; /* Use flex to align title and subtitle vertically */
+    flex-direction: column;
 }
 
 .commerce-account-sidebar-item-title {
-    font: var(--type-button-1-font);
-    margin: 0 0 var(--spacing-xxsmall);
+    font: var(--type-button-1-font); /* Assuming this variable uses a premium font */
+    font-weight: 600; /* Make it bolder for prominence */
+    margin: 0; /* Remove default margins */
     border: none;
     text-decoration: none;
+    color: var(--premium-color-primary); /* Ensure strong primary color */
+    line-height: 1.2; /* Tighter line height for titles */
 }
 
 .commerce-account-sidebar-item-subtitle {
-    font: var(--type-button-2-font);
-    margin: 0;
+    font: var(--type-button-2-font); /* Assuming this variable uses a premium font */
+    font-weight: 400; /* Regular weight for subtitle */
+    margin: var(--premium-spacing-xxsmall) 0 0; /* Small top margin to separate from title */
     text-decoration: none;
+    color: var(--premium-color-secondary); /* Muted secondary color */
+    line-height: 1.3; /* A bit more breathing room for subtitle */
 }
 
 .commerce-account-sidebar-item-arrow {
     flex: 0 0 auto;
-    margin-left: var(--spacing-small);
+    margin-left: var(--premium-spacing-large); /* More space for the arrow to the right */
+    /* Ensure the arrow SVG itself is styled for consistency */
 }
 
 .commerce-account-sidebar-item-arrow > div {
     display: flex;
     align-items: center;
     justify-content: center;
+    & svg {
+        stroke: var(--premium-color-secondary); /* Match subtitle color for subtlety */
+        width: 24px; /* Slightly smaller or adjust to fit visual flow */
+        height: 24px;
+        transition: transform 0.2s ease-in-out;
+    }
+}
+
+/* Optional: Slight arrow movement on hover for extra polish */
+.commerce-account-sidebar-wrapper .commerce-account-sidebar .commerce-account-sidebar-item:hover .commerce-account-sidebar-item-arrow > div svg {
+    transform: translateX(3px); /* Arrow slides slightly right */
+    stroke: var(--premium-color-primary); /* Arrow darkens on hover */
+}
+
+/* Ensure the SVG stroke color updates correctly for active items */
+.commerce-account-sidebar-wrapper .commerce-account-sidebar .commerce-account-sidebar-item-active .commerce-account-sidebar-item-icon svg,
+.commerce-account-sidebar-wrapper .commerce-account-sidebar .commerce-account-sidebar-item-active .commerce-account-sidebar-item-arrow svg {
+    stroke: var(--premium-color-primary); /* Or a specific accent color if desired */
 }

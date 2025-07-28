@@ -402,7 +402,7 @@ main > .section {
 main > .section > div {
   max-width: 1200px;
   margin: auto;
-  padding: 0 var(--spacing-medium);
+  /* padding: 0 var(--spacing-medium); */
 }
 
 main > .section:first-of-type {
@@ -411,7 +411,7 @@ main > .section:first-of-type {
 
 @media (width >= 900px) {
   main > .section > div {
-    padding: 0 var(--spacing-big);
+    /* padding: 0 var(--spacing-big); */
   }
 }
 
@@ -563,8 +563,92 @@ main {
   
 }
 
+nav .default-content-wrapper {
+  background-color: transparent;
+}
+
 .footer{
   a {
     color: #F2F1FB !important;
   }
 }
+
+.section.carouselbanner-container {
+  margin-bottom: 0 !important;
+}
+
+.section.brands-container ,.section.categories-container,.section.enrichment-container {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom:  0 !important;
+}
+
+.footer .default-content-wrapper {
+  background-color: transparent;
+}
+
+
+
+
+.auth-combine-modal-overlay .auth-combine .dropin-button--primary {
+    background-color: #2B3A7A;
+    border-radius: 0;
+}
+
+
+.auth-combine-modal-overlay .auth-combine .dropin-input--primary {
+    border: 1px solid #001f3f;
+}
+
+.auth-combine-modal-overlay .auth-combine .dropin-input--primary:focus {
+    border-radius: 10px;
+    /* box-shadow: 1px 1px 1px 1px #FFD700; */
+}
+
+.auth-combine-modal-overlay .auth-combine .dropin-header-container , .auth-combine-modal-overlay .auth-combine.dropin-button--primary {
+    text-transform: uppercase;
+}
+
+.auth-combine-modal-overlay .auth-combine .dropin-button--medium :hover {
+  text-decoration: underline;
+}
+
+
+
+.nav-auth-menu-panel .dropin-button--primary {
+    background-color: #2B3A7A;
+    border-radius: 0;
+}
+
+
+.nav-auth-menu-panel .dropin-input--primary {
+    border: 1px solid #001f3f;
+}
+
+.nav-auth-menu-panel .dropin-input--primary:focus {
+    border-radius: 10px;
+    /* box-shadow: 1px 1px 1px 1px #FFD700; */
+}
+
+.nav-auth-menu-panel .dropin-header-container , .nav-auth-menu-panel .dropin-button--primary {
+    text-transform: uppercase;
+}
+
+.nav-auth-menu-panel .dropin-button--medium :hover {
+  text-decoration: underline;
+}
+
+.nav-auth-menu-panel .auth-sign-in-form {
+ border-radius: 0%;
+}
+
+.nav-auth-menu-panel .dropin-input__field-icon--left {
+  color: #1F2937;
+}
+
+.dropin-button--primary {
+  background-color: #1F2937 !important;
+  font-weight: bold !important;
+}
+
+

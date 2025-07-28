@@ -347,3 +347,21 @@
     margin-top: 0;
   }
 }
+
+.checkout__wrapper .checkout__main {
+  background-color: white;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout__wrapper .dropin-button--primary {
+  background-color: #2B3A7A;
+  color: #fff;
+}
+
+.checkout__wrapper .checkout__aside {
+  background-color: white;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: var(--spacing-medium);
+}

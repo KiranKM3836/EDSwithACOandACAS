@@ -1,0 +1,253 @@
+/* --- Brands Section and Carousel UI --- */
+
+/* Parent container for the entire brands block */
+.brands.block {
+    padding: 60px 0 0 0;
+    background-color: #f8f8f8;
+    text-align: center;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.brands.block h2 {
+    font-size: 2.8em;
+    color: #001f3f; /* Deep blue-black for a premium feel */
+    margin-bottom: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.brands-container-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px; /* This padding dictates the inner bounds of your content */
+    position: relative; /* CRITICAL: This is the positioning context for the corner arrows */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* The actual carousel display area */
+.brands-carousel {
+    overflow: hidden; /* Keep this to clip the track horizontally */
+    width: 100%;
+    margin-bottom: 30px;
+    user-select: none;
+    cursor: grab;
+    /* IMPORTANT: Add vertical padding to create space for the lifted items on hover */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box; /* Ensures padding is included in the element's total height */
+}
+
+.brands-carousel.is-dragging {
+    cursor: grabbing;
+}
+
+/* The track that moves horizontally */
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+    /* IMPORTANT: Negative vertical margin to visually align items within the padded carousel */
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+/* Individual brand logo item */
+.brand-logo-item {
+    flex-shrink: 0;
+    width: 200px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px; /* Space between logos */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+}
+
+.brand-logo-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: #FFD700;
+    z-index: 2;
+}
+
+.brand-logo-item img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.brand-logo-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Carousel Navigation Buttons - NEW CORNER POSITIONING */
+/* The .carousel-buttons wrapper div is now ignored by CSS for positioning */
+/* as buttons are directly appended to brands-container-wrapper */
+.carousel-buttons {
+    /* This rule will not be active for positioning the buttons,
+       as they are no longer children of this div in the JS.
+       You can remove this entire .carousel-buttons rule from your CSS if desired. */
+    display: block; /* Ensure it's not display: none, though it's technically empty now */
+}
+
+
+.carousel-button {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: all;
+    opacity: 0.8;
+    z-index: 100; /* Ensure buttons are on top of everything */
+
+    /* Positioning for individual buttons relative to .brands-container-wrapper */
+    position: absolute;
+}
+
+/* Specific positioning for the previous button */
+.carousel-button.prev-button {
+    top: 15px; /* Distance from the top of the wrapper */
+    left: 15px; /* Distance from the left edge of the wrapper (inside the 40px padding) */
+    /* Adjust these values to place them exactly where you want in the corner */
+}
+
+/* Specific positioning for the next button */
+.carousel-button.next-button {
+    top: 15px; /* Distance from the top of the wrapper (match prev-button) */
+    right: 15px; /* Distance from the right edge of the wrapper (inside the 40px padding) */
+    /* Adjust these values to place them exactly where you want in the corner */
+}
+
+
+.carousel-button:hover {
+    background-color: #FFD700;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.carousel-button svg {
+    color: #1a1a1a;
+    width: 20px;
+    height: 20px;
+    transition: color 0.3s ease;
+}
+
+.carousel-button:hover svg {
+    color: #ffffff;
+}
+
+.carousel-button.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: none;
+}
+
+.carousel-button.disabled:hover svg {
+    color: #1a1a1a;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+    .brands.block {
+        padding: 40px 0;
+    }
+    .brands-container-wrapper {
+        padding: 0 20px;
+    }
+
+    .brand-logo-item {
+        width: 180px;
+        height: 100px;
+        margin: 0 15px;
+    }
+
+    .carousel-button {
+        width: 40px;
+        height: 40px;
+    }
+    .carousel-button.prev-button {
+        left: 5px; /* Adjust for smaller screens matching wrapper padding */
+        top: 10px; /* Slightly closer to top */
+    }
+    .carousel-button.next-button {
+        right: 5px; /* Adjust for smaller screens matching wrapper padding */
+        top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .brands.block h2 {
+        font-size: 2.2em;
+        margin-bottom: 40px;
+    }
+
+    .brands-container-wrapper {
+        padding: 0 10px;
+    }
+
+    .brand-logo-item {
+        width: 150px;
+        height: 90px;
+        margin: 0 10px;
+    }
+
+    /* Hide buttons entirely on smaller mobile to allow natural scroll/swipe */
+    .carousel-button {
+        display: none; /* Hide individual buttons on smaller viewports */
+    }
+
+    .brands-carousel {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+
+    .brand-logo-item {
+        scroll-snap-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .brands.block {
+        padding: 30px 0;
+    }
+
+    .brands.block h2 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+
+    .brand-logo-item {
+        width: 120px;
+        height: 80px;
+        margin: 0 8px;
+    }
+}

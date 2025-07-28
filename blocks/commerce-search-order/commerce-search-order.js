@@ -61,7 +61,10 @@ export default async function decorate(block) {
     isAuth: checkIsAuthenticated(),
     renderSignIn: async ({ render, formValues }) => {
       if (render) {
-        renderSignIn(block, formValues?.email ?? '', formValues?.number ?? '');
+        renderSignIn(
+          block,
+          formValues?.email ?? '',
+          formValues?.number ?? '');
 
         return false;
       }

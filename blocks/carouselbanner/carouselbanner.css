@@ -1,0 +1,109 @@
+/* Carousel Container */
+.carouselbanner.block {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Carousel Wrapper for slides */
+.carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Ensure wrapper takes full width for flex item sizing */
+}
+
+/* Individual Slide */
+.carousel-slide {
+    flex: 0 0 100%; /* Each slide takes full width of the wrapper */
+    width: 100%; /* Ensure images inside take full slide width */
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: none; /* Hide by default */
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    display: block; /* Show active slide */
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 400px; /* Enforce desired height */
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    display: block;
+}
+
+.carousel-slide a {
+    display: block; /* Make the entire slide clickable */
+    width: 100%;
+    height: 100%;
+}
+
+/* Navigation Buttons */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Make buttons round */
+    height: 50px; /* Make buttons round */
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Pagination Dots */
+.carousel-pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.pagination-dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination-dot.active {
+    background-color: white;
+    border-color: white;
+}
+
+.pagination-dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}

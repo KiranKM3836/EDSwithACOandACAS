@@ -28,7 +28,8 @@ function renderSignIn(element) {
 export function renderAuthDropdown(navTools) {
   const dropdownElement = document.createRange().createContextualFragment(`
  <div class="dropdown-wrapper nav-tools-wrapper">
-    <button type="button" class="nav-dropdown-button" aria-haspopup="dialog" aria-expanded="false" aria-controls="login-modal"></button>
+    <button type="button" class="nav-dropdown-button nav-dropdown-button-mobile" aria-haspopup="dialog" aria-expanded="false" aria-controls="login-modal"></button>
+    <button type="button" class="nav-dropdown-button nav-dropdown-button-desktop" aria-haspopup="dialog" aria-expanded="false" aria-controls="login-modal"></button>
     <div class="nav-auth-menu-panel nav-tools-panel">
       <div id="auth-dropin-container"></div>
       <ul class="authenticated-user-menu">
@@ -45,7 +46,8 @@ export function renderAuthDropdown(navTools) {
     '.authenticated-user-menu',
   );
   const authDropinContainer = navTools.querySelector('#auth-dropin-container');
-  const loginButton = navTools.querySelector('.nav-dropdown-button');
+  const loginButtonMobile = navTools.querySelector('.nav-dropdown-button-mobile');
+  const loginButtonDesktop = navTools.querySelector('.nav-dropdown-button-desktop');
   const logoutButtonElement = navTools.querySelector(
     '.authenticated-user-menu > li > button',
   );
@@ -63,10 +65,20 @@ export function renderAuthDropdown(navTools) {
     authDropDownPanel.focus();
   }
 
-  loginButton.addEventListener('click', () => toggleDropDownAuthMenu());
+  loginButtonMobile.addEventListener('click', () => toggleDropDownAuthMenu());
   document.addEventListener('click', async (e) => {
     const clickOnDropDownPanel = authDropDownPanel.contains(e.target);
-    const clickOnLoginButton = loginButton.contains(e.target);
+    const clickOnLoginButton = loginButtonMobile.contains(e.target);
+
+    if (!clickOnDropDownPanel && !clickOnLoginButton) {
+      await toggleDropDownAuthMenu(false);
+    }
+  });
+
+  loginButtonDesktop.addEventListener('click', () => toggleDropDownAuthMenu());
+  document.addEventListener('click', async (e) => {
+    const clickOnDropDownPanel = authDropDownPanel.contains(e.target);
+    const clickOnLoginButton = loginButtonDesktop.contains(e.target);
 
     if (!clickOnDropDownPanel && !clickOnLoginButton) {
       await toggleDropDownAuthMenu(false);
@@ -86,15 +98,7 @@ export function renderAuthDropdown(navTools) {
   const updateDropDownUI = (isAuthenticated) => {
     const getUserTokenCookie = getCookie('auth_dropin_user_token');
     const getUserNameCookie = getCookie('auth_dropin_firstname');
-
-    if (isAuthenticated || getUserTokenCookie) {
-      authDropDownMenuList.style.display = 'block';
-      authDropinContainer.style.display = 'none';
-      loginButton.textContent = `Hi, ${getUserNameCookie}`;
-    } else {
-      authDropDownMenuList.style.display = 'none';
-      authDropinContainer.style.display = 'block';
-      loginButton.innerHTML = `
+    const iconHtml = `
       <svg
           width="25"
           height="25"
@@ -105,6 +109,18 @@ export function renderAuthDropdown(navTools) {
           <circle cx="12" cy="6" r="4"></circle>
           <path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z"></path></g></svg>
         `;
+
+    loginButtonMobile.innerHTML = iconHtml
+
+    if (isAuthenticated || getUserTokenCookie) {
+      authDropDownMenuList.style.display = 'block';
+      authDropinContainer.style.display = 'none';
+      loginButtonDesktop.textContent = `Hi, ${getUserNameCookie}`;
+      
+    } else {
+      authDropDownMenuList.style.display = 'none';
+      authDropinContainer.style.display = 'block';
+      loginButtonDesktop.innerHTML = iconHtml
     }
   };
 
