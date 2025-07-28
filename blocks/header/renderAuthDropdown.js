@@ -68,7 +68,7 @@ export function renderAuthDropdown(navTools) {
   loginButtonMobile.addEventListener('click', () => toggleDropDownAuthMenu());
   document.addEventListener('click', async (e) => {
     const clickOnDropDownPanel = authDropDownPanel.contains(e.target);
-    const clickOnLoginButton = loginButton.contains(e.target);
+    const clickOnLoginButton = loginButtonMobile.contains(e.target);
 
     if (!clickOnDropDownPanel && !clickOnLoginButton) {
       await toggleDropDownAuthMenu(false);
@@ -78,7 +78,7 @@ export function renderAuthDropdown(navTools) {
   loginButtonDesktop.addEventListener('click', () => toggleDropDownAuthMenu());
   document.addEventListener('click', async (e) => {
     const clickOnDropDownPanel = authDropDownPanel.contains(e.target);
-    const clickOnLoginButton = loginButton.contains(e.target);
+    const clickOnLoginButton = loginButtonDesktop.contains(e.target);
 
     if (!clickOnDropDownPanel && !clickOnLoginButton) {
       await toggleDropDownAuthMenu(false);
@@ -98,8 +98,6 @@ export function renderAuthDropdown(navTools) {
   const updateDropDownUI = (isAuthenticated) => {
     const getUserTokenCookie = getCookie('auth_dropin_user_token');
     const getUserNameCookie = getCookie('auth_dropin_firstname');
-    const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth; // Get viewport width
-    const isMobile = screenWidth < 900; // Assuming 900px is your mobile breakpoint
     const iconHtml = `
       <svg
           width="25"
