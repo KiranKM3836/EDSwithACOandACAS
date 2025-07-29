@@ -1,24 +1,25 @@
 {
   "public": {
     "default": {
-      "commerce-core-endpoint" : "https://na1-sandbox.api.commerce.adobe.com/GMBkaBQSumFG4qaxU86h3L/graphql",
-      "commerce-endpoint": "https://na1-sandbox.api.commerce.adobe.com/GMBkaBQSumFG4qaxU86h3L/graphql",
+      "commerce-core-endpoint": "https://na1-sandbox.api.commerce.adobe.com/GMBkaBQSumFG4qaxU86h3L/graphql",
+      "commerce-endpoint": "https://na1-sandbox.api.commerce.adobe.com/UwaXpL8Cr8AW34nXpBwGZg/graphql",
       "headers": {
+        "all": {
+          "Store": "default"
+        },
         "cs": {
-          "Magento-Customer-Group": "b6589fc6ab0dc82cf12099d1c2d40ab994e8410c",
-          "Magento-Store-Code": "main_website_store",
-          "Magento-Store-View-Code": "default",
-          "Magento-Website-Code": "base",
-          "x-api-key": "bd6aaca4785843bf883605d4a1e3ab5b",
-          "Magento-Environment-Id": "GMBkaBQSumFG4qaxU86h3L"
+          "ac-catalog-view-id": "5e2deb01-3e60-4c16-94e2-0f53ac4b4151",
+          "ac-price-book-id": "east_coast_inc",
+          "ac-source-locale": "en-US",
+          "ac-environment-id": "UwaXpL8Cr8AW34nXpBwGZg"
         }
       },
       "analytics": {
         "base-currency-code": "USD",
         "environment": "Production",
         "store-id": 1,
-        "store-name": "Main Website Store",
-        "store-url": "https://kamlesh--klizerpoc--balathangam.aem.live/",
+        "store-name": "ACO Demo",
+        "store-url": "http://main--EDSwithACOandACAS--KiranKM3836.aem.live/",
         "store-view-id": 1,
         "store-view-name": "Default Store View",
         "website-id": 1,
