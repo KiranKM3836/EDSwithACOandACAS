@@ -112,6 +112,7 @@ main .section.product-list-page-custom-container > .default-content-wrapper h1:f
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .product-list-page-custom .facets .facet-list .facet > label::after {
@@ -511,6 +512,7 @@ main .section.product-list-page-custom-container > .default-content-wrapper h1:f
   width: 100%;
   height: 100%;
   grid-area: 1 / 1 / 1 / 1;
+  text-align: center;
 }
 
 .product-list-page-custom .products .list > ol > li .picture img {
@@ -665,6 +667,7 @@ main .section.product-list-page-custom-container > .default-content-wrapper h1:f
 @media (width >= 900px) {
   .product-list-page-custom {
     display: flex;
+    flex-direction: row !important;
   }
 
   main .section > div.product-list-page-custom-wrapper {
@@ -679,6 +682,11 @@ main .section.product-list-page-custom-container > .default-content-wrapper h1:f
     position: unset;
     z-index: unset;
     overflow: unset;
+    background-color: #ffff;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    width: 250px;
   }
 
   .product-list-page-custom .facets .close {
