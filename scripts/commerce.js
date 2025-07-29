@@ -117,7 +117,40 @@ export async function commerceEndpointWithQueryParams() {
   return urlWithQueryParams;
 }
 
+export async function commerceCoreEndpointWithQueryParams() {
+  const urlWithQueryParams = new URL(getConfigValue('commerce-core-endpoint'));
+  const headers = getHeaders('accs');
+  const shortHash = createHashFromObject(headers);
+  urlWithQueryParams.searchParams.append('cb', shortHash);
+  return urlWithQueryParams;
+}
+
 /* Common functionality */
+
+export async function performCoreCatalogServiceQuery(query, variables) {
+  const headers = {
+    ...(getHeaders('accs')),
+    'Content-Type': 'application/json',
+  };
+
+  const apiCall = await commerceCoreEndpointWithQueryParams();
+  apiCall.searchParams.append('query', query.replace(/(?:\r\n|\r|\n|\t|[\s]{4})/g, ' ')
+    .replace(/\s\s+/g, ' '));
+  apiCall.searchParams.append('variables', variables ? JSON.stringify(variables) : null);
+
+  const response = await fetch(apiCall, {
+    method: 'GET',
+    headers,
+  });
+
+  if (!response.ok) {
+    return null;
+  }
+
+  const queryResponse = await response.json();
+
+  return queryResponse.data;
+}
 
 export async function performCatalogServiceQuery(query, variables) {
   const headers = {

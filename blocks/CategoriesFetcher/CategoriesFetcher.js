@@ -1,4 +1,4 @@
-import { performCatalogServiceQuery } from '../../scripts/commerce.js';
+import { performCoreCatalogServiceQuery } from '../../scripts/commerce.js';
 
 export default async function decorate(block) {
   block.innerHTML = '';
@@ -15,18 +15,20 @@ export default async function decorate(block) {
   `;
 
   try {
-    const data = await performCatalogServiceQuery(categoryQuery, {}); // Pass empty vars object
+    const data = await performCoreCatalogServiceQuery(categoryQuery, {}); // Pass empty vars object
     const categories = data?.categories || [];
+    const idsToRemove = ['2'];
+    const filteredCategories = categories.filter(category => !idsToRemove.includes(category.id));
 
-    if (categories.length === 0) {
-      block.innerHTML = '<p>No categories found.</p>';
+    if (filteredCategories.length === 0) {
+      block.innerHTML = '';
       return;
     }
 
     const ul = document.createElement('ul');
     ul.className = 'category-list';
 
-    categories.forEach((category) => {
+    filteredCategories.forEach((category) => {
       const li = document.createElement('li');
       const a = document.createElement('a');
       // You won’t have `url_path`, so use name as placeholder
