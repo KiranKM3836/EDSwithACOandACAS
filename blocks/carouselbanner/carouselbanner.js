@@ -1,6 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
-import fetchCategoriesByParentID from '../../scripts/custom_dropins/commerceBackend/fetchCategoriesByParentID.js'
 
 export default async function decorate(block) {
 
@@ -119,5 +118,5 @@ export default async function decorate(block) {
         }, 5000);
     });
 
-    console.log(fetchCategoriesByParentID(2),"catgories")
+    // console.log(fetchSKUsByCategory(),"products")
 }
