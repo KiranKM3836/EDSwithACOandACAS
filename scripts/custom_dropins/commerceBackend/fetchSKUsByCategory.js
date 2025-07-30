@@ -1,4 +1,4 @@
-import { priceFieldsFragment, performCoreCatalogServiceQuery, performCatalogServiceQuery } from '../../commerce.js';
+import { performCatalogServiceQuery } from '../../commerce.js';
 
 
 const productSearchQueryACO =()=>`query productSearch(
