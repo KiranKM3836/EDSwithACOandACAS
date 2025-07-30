@@ -66,24 +66,17 @@ export function renderAuthDropdown(navTools) {
   }
 
   loginButtonMobile.addEventListener('click', () => toggleDropDownAuthMenu());
-  document.addEventListener('click', async (e) => {
-    const clickOnDropDownPanel = authDropDownPanel.contains(e.target);
-    const clickOnLoginButton = loginButtonMobile.contains(e.target);
-
-    if (!clickOnDropDownPanel && !clickOnLoginButton) {
-      await toggleDropDownAuthMenu(false);
-    }
-  });
-
   loginButtonDesktop.addEventListener('click', () => toggleDropDownAuthMenu());
   document.addEventListener('click', async (e) => {
     const clickOnDropDownPanel = authDropDownPanel.contains(e.target);
-    const clickOnLoginButton = loginButtonDesktop.contains(e.target);
+    const clickOnLoginButtonMobile = loginButtonMobile.contains(e.target);
+    const clickOnLoginButtonDesktop = loginButtonDesktop.contains(e.target);
 
-    if (!clickOnDropDownPanel && !clickOnLoginButton) {
+    if (!clickOnDropDownPanel && !clickOnLoginButtonMobile && !clickOnLoginButtonDesktop) {
       await toggleDropDownAuthMenu(false);
     }
   });
+
 
   logoutButtonElement.addEventListener('click', async () => {
     await authApi.revokeCustomerToken();
