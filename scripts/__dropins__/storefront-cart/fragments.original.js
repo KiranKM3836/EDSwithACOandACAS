@@ -1,6 +1,6 @@
 /*! Copyright 2025 Adobe
 All Rights Reserved. */
-const e=`
+const e = `
   fragment PRICE_RANGE_FRAGMENT on PriceRange {
     minimum_price {
       regular_price {
@@ -31,7 +31,9 @@ const e=`
       }
     }
   }
-`,_=`
+`;
+
+const _ = `
   fragment CUSTOMIZABLE_OPTIONS_FRAGMENT on SelectedCustomizableOption {
     type
     customizable_option_uid
@@ -47,7 +49,9 @@ const e=`
       }
     }
   }
-`,a=`
+`;
+
+const a = `
   fragment DOWNLOADABLE_CART_ITEMS_FRAGMENT on DownloadableCartItem {
     links {
       sort_order
@@ -57,7 +61,9 @@ const e=`
       ...CUSTOMIZABLE_OPTIONS_FRAGMENT
     }
   }
-`,t=`
+`;
+
+const t = `
   fragment APPLIED_GIFT_CARDS_FRAGMENT on AppliedGiftCard {
     __typename
     code
@@ -71,14 +77,18 @@ const e=`
     }
     expiration_date
   }
-`,r=`
+`;
+
+const r = `
   fragment GIFT_MESSAGE_FRAGMENT on GiftMessage {
     __typename
     from
     to
     message
   }
-`,i=`
+`;
+
+const i = `
   fragment GIFT_WRAPPING_FRAGMENT on GiftWrapping {
     __typename
     uid
@@ -91,7 +101,9 @@ const e=`
       currency
     }
   }
-`,n=`
+`;
+
+const n = `
   fragment AVAILABLE_GIFT_WRAPPING_FRAGMENT on GiftWrapping {
    __typename
    uid
@@ -105,13 +117,14 @@ const e=`
      value
    }
   }
-`,l=`
+`;
+
+const l = `
   fragment CART_ITEM_FRAGMENT on CartItemInterface {
     __typename
     uid
     quantity
     is_available
-    not_available_message
     errors {
       code
       message
@@ -152,26 +165,12 @@ const e=`
         }
         label
       }
-      original_item_price {
-        value
-        currency
-      }
-      original_row_total {
-        value
-        currency
-      }
     }
 
     product {
       name
       sku
-      quantity
-      gift_message_available
-      gift_wrapping_available
-      gift_wrapping_price {
-        currency
-        value
-      }
+      gift_message_available   # ✅ still supported
       thumbnail {
         url
         label
@@ -183,20 +182,9 @@ const e=`
         url_key
         name
       }
-      custom_attributesV2(filters: { is_visible_on_front: true }) {
-        items {
-          code
-          ... on AttributeValue {
-            value
-          }
-          ... on AttributeSelectedOptions {
-            selected_options {
-              value
-              label
-            }
-          }
-        }
-      }
+      # ❌ removed product.quantity
+      # ❌ removed gift_wrapping_available
+      # ❌ removed gift_wrapping_price
       only_x_left_in_stock
       stock_status
       price_range {
@@ -290,7 +278,9 @@ const e=`
   ${i}
   ${r}
   ${n}
-`,u=`
+`;
+
+const u = `
   fragment CART_FRAGMENT on Cart {
     id
     total_quantity
@@ -315,15 +305,7 @@ const e=`
           currency
           value
         }
-        gift_wrapping_for_items_incl_tax {
-          currency
-          value
-        }
         gift_wrapping_for_order {
-          currency
-          value
-        }
-        gift_wrapping_for_order_incl_tax {
           currency
           value
         }
@@ -331,14 +313,6 @@ const e=`
           currency
           value
         }
-        printed_card_incl_tax {
-          currency
-          value
-        }
-      }
-      subtotal_with_discount_excluding_tax {
-        currency
-        value
       }
       subtotal_including_tax {
         currency
@@ -349,10 +323,6 @@ const e=`
         value
       }
       grand_total {
-        currency
-        value
-      }
-      grand_total_excluding_tax {
         currency
         value
       }
@@ -400,4 +370,14 @@ const e=`
 
   ${l}
   ${t}
-`;export{t as APPLIED_GIFT_CARDS_FRAGMENT,n as AVAILABLE_GIFT_WRAPPING_FRAGMENT,u as CART_FRAGMENT,l as CART_ITEM_FRAGMENT,a as DOWNLOADABLE_CART_ITEMS_FRAGMENT,r as GIFT_MESSAGE_FRAGMENT,i as GIFT_WRAPPING_FRAGMENT};
+`;
+
+export {
+  t as APPLIED_GIFT_CARDS_FRAGMENT,
+  n as AVAILABLE_GIFT_WRAPPING_FRAGMENT,
+  u as CART_FRAGMENT,
+  l as CART_ITEM_FRAGMENT,
+  a as DOWNLOADABLE_CART_ITEMS_FRAGMENT,
+  r as GIFT_MESSAGE_FRAGMENT,
+  i as GIFT_WRAPPING_FRAGMENT
+};

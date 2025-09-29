@@ -51,6 +51,7 @@ export default async function decorate(block) {
       return a.toString();
     },
   };
+  console.log("product added to cart")
 
   if (type !== 'search') {
     storeDetails.config.categoryName = document.querySelector('.default-content-wrapper > h1')?.innerText;

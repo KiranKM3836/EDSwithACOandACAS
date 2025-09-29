@@ -1,25 +1,14 @@
 {
   "public": {
     "default": {
-      "commerce-core-endpoint": "https://na1-sandbox.api.commerce.adobe.com/GMBkaBQSumFG4qaxU86h3L/graphql",
+      "commerce-core-endpoint": "https://m247ee.klizer.co/graphql",
       "commerce-endpoint": "https://na1-sandbox.api.commerce.adobe.com/UwaXpL8Cr8AW34nXpBwGZg/graphql",
       "headers": {
-        "all": {
-          "Store": "default"
-        },
         "cs": {
-          "ac-catalog-view-id": "5e2deb01-3e60-4c16-94e2-0f53ac4b4151",
-          "ac-price-book-id": "east_coast_inc",
+          "ac-catalog-view-id": "ce1f1c40-c1ed-4ebd-b2ec-7b9869c8b4ea",
+          "ac-price-book-id": "b2b_shared_catalog",
           "ac-source-locale": "en-US",
           "ac-environment-id": "UwaXpL8Cr8AW34nXpBwGZg"
-        },
-        "accs": {
-          "Magento-Customer-Group": "b6589fc6ab0dc82cf12099d1c2d40ab994e8410c",
-          "Magento-Store-Code": "main_website_store",
-          "Magento-Store-View-Code": "default",
-          "Magento-Website-Code": "base",
-          "x-api-key": "bd6aaca4785843bf883605d4a1e3ab5b",
-          "Magento-Environment-Id": "GMBkaBQSumFG4qaxU86h3L"
         }
       },
       "analytics": {
